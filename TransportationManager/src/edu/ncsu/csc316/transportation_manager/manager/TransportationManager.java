@@ -146,6 +146,7 @@ public class TransportationManager {
 			res += "   " + curr.getData().toString() + ",\n";
 			curr = curr.getNext();
 		}
+		System.out.println(res + "   " + curr.getData().toString() + "\n]");
 		return res + "   " + curr.getData().toString() + "\n]";
 		
 	}
