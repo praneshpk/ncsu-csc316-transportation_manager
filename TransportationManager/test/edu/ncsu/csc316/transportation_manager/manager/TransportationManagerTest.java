@@ -29,8 +29,8 @@ public class TransportationManagerTest {
 				+ "   Highway[city1=3, city2=1, cost=10.0, asphalt=112.0]\n"
 				+ "]", t.getMinimumHighways("COST"));
 		assertEquals("List[\n"
-				+ "   Highway[city1=1, city2=2, cost=6.0, asphalt=72.0],\n"
 				+ "   Highway[city1=1, city2=0, cost=5.0, asphalt=99.0],\n"
+				+ "   Highway[city1=1, city2=2, cost=6.0, asphalt=72.0],\n"
 				+ "   Highway[city1=2, city2=0, cost=7.0, asphalt=159.0]\n"
 				+ "]", t.getMinimumHighways("ASPHALT"));
 		t = new TransportationManager("input/highways_small.txt");
@@ -46,9 +46,9 @@ public class TransportationManagerTest {
 				+ "   Highway[city1=3, city2=1, cost=10.0, asphalt=66.0]\n"
 				+ "]", t.getMinimumHighways("COST"));
 		assertEquals("List[\n"
+				+ "   Highway[city1=1, city2=0, cost=5.0, asphalt=101.0],\n"
 				+ "   Highway[city1=1, city2=2, cost=6.0, asphalt=55.0],\n"
-				+ "   Highway[city1=3, city2=1, cost=10.0, asphalt=66.0],\n"
-				+ "   Highway[city1=1, city2=0, cost=5.0, asphalt=101.0]\n"
+				+ "   Highway[city1=3, city2=1, cost=10.0, asphalt=66.0]\n"
 				+ "]", t.getMinimumHighways("ASPHALT"));
 		t = new TransportationManager("input/invalidmap.txt");
 		try {

@@ -98,10 +98,55 @@ public class TransportationManager {
 		UpTree tree = new UpTree(alist.size());
 		for(int i = 0; i < heap.size(); i++ )
 			tree.union(heap.get(i).city1(), heap.get(i).city2());
+		DoubleList<Highway> temp = null;
+		for(int i = 0; i < tree.size(); i++ ) {
+			Highway h = heap.deleteMin();
+			if(temp == null) {
+				temp = new DoubleList<>();
+				temp.add(h);
+				
+			}
+			else {
+				Node<Highway> curr = temp.getFirst();
+				for(int j = 0; j < temp.size(); j++ ) {
+					if(curr.getData().city1() > h.city1()) {
+						temp.add(h, curr.getPrev(), curr);
+						break;
+					}
+					else if(curr.getData().city1() == h.city1() ) {
+						if(curr.getData().city2() > h.city2()) {
+							temp.add(h, curr.getPrev(), curr);
+							break;
+						}
+						else if(curr.getData().city2() == h.city2()) {
+							if(curr.getData().cost() > h.cost()) {
+								temp.add(h, curr.getPrev(), curr);
+								break;
+							}
+							else if( curr.getData().cost() == h.cost() && curr.getData().asphalt() > h.asphalt()) {
+									temp.add(h, curr.getPrev(), curr);
+									break;
+							}
+						}
+						temp.add(h, curr, curr.getNext());
+						break;
+					}
+					else if(j == temp.size() - 1) {
+						temp.add(h);
+						break;
+					}
+					curr = curr.getNext();
+				}
+			}
+			
+		}
 		String res = "List[\n";
-		for(int i = 0; i < tree.size() - 1; i++ )
-			res += "   " + heap.deleteMin().toString() + ",\n";
-		return res + "   " + heap.deleteMin().toString() + "\n]";
+		Node<Highway> curr = temp.getFirst();
+		for(int i = 0; i < temp.size() - 1; i++ ) {
+			res += "   " + curr.getData().toString() + ",\n";
+			curr = curr.getNext();
+		}
+		return res + "   " + curr.getData().toString() + "\n]";
 		
 	}
 }
