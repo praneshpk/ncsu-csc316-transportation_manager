@@ -73,7 +73,7 @@ public class AdjacencyList {
 						data[city2].add(h, curr.getPrev(), curr);
 						break;
 					}
-					else if(curr.getData().city1() == h.city1() ) {
+					/*else if(curr.getData().city1() == h.city1() ) {
 						if(curr.getData().city2() > h.city2()) {
 							data[city2].add(h, curr.getPrev(), curr);
 							break;
@@ -90,7 +90,7 @@ public class AdjacencyList {
 						}
 						data[city2].add(h, curr, curr.getNext());
 						break;
-					}
+					}*/
 					else if(j == data[city2].size() - 1) {
 						data[city2].add(h);
 						break;
