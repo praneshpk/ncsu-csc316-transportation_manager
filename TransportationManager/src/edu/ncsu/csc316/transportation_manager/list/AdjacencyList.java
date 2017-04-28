@@ -46,11 +46,9 @@ public class AdjacencyList {
 								data[city1].add(h, curr.getPrev(), curr);
 								break;
 							}
-							else if( curr.getData().cost() == h.cost()) {
-								if(curr.getData().asphalt() > h.asphalt()) {
+							else if( curr.getData().cost() == h.cost() && curr.getData().asphalt() > h.asphalt()) {
 									data[city1].add(h, curr.getPrev(), curr);
 									break;
-								}
 							}
 						}
 						data[city1].add(h, curr, curr.getNext());
@@ -85,11 +83,9 @@ public class AdjacencyList {
 								data[city2].add(h, curr.getPrev(), curr);
 								break;
 							}
-							else if( curr.getData().cost() == h.cost()) {
-								if(curr.getData().asphalt() > h.asphalt()) {
+							else if( curr.getData().cost() == h.cost() && curr.getData().asphalt() > h.asphalt()) {
 									data[city2].add(h, curr.getPrev(), curr);
 									break;
-								}
 							}
 						}
 						data[city2].add(h, curr, curr.getNext());
