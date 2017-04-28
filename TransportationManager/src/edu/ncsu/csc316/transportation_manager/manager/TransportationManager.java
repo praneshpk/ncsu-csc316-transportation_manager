@@ -1,6 +1,7 @@
 package edu.ncsu.csc316.transportation_manager.manager;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 import edu.ncsu.csc316.transportation_manager.heap.MinHighwayHeap;
@@ -39,10 +40,10 @@ public class TransportationManager {
 					list.addLast( new Highway(arg1, arg2, arg3, arg4 ) );
 				} catch( Exception e ) {
 					System.out.println("Error: Invalid file!");
-					return;
+					throw new IllegalArgumentException();
 				}
 			}
-		} catch(Exception e) {
+		} catch(IOException e) {
 			System.out.println("Error: File " + pathToFile + " not found");
 			throw new IllegalArgumentException();
 		}
@@ -146,7 +147,6 @@ public class TransportationManager {
 			res += "   " + curr.getData().toString() + ",\n";
 			curr = curr.getNext();
 		}
-		System.out.println(res + "   " + curr.getData().toString() + "\n]");
 		return res + "   " + curr.getData().toString() + "\n]";
 		
 	}

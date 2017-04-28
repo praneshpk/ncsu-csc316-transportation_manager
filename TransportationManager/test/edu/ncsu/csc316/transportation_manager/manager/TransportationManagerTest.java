@@ -50,7 +50,11 @@ public class TransportationManagerTest {
 				+ "   Highway[city1=1, city2=2, cost=6.0, asphalt=55.0],\n"
 				+ "   Highway[city1=3, city2=1, cost=10.0, asphalt=66.0]\n"
 				+ "]", t.getMinimumHighways("ASPHALT"));
-		t = new TransportationManager("input/invalidmap.txt");
+		try {
+			t = new TransportationManager("input/invalidmap.txt");
+		} catch( Exception e) {
+			// Supposed to happen
+		}
 		try {
 			t = new TransportationManager("input/nonexistent.txt");
 		} catch( Exception e) {
